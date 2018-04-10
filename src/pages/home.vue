@@ -1,21 +1,23 @@
 <template lang="html">
   <div :class="$style.home">
-    hello world
-    <p>i am child</p>
+    <HomeHeader></HomeHeader>
   </div>
 </template>
 
 <script>
+import HomeHeader from './components/homeHeader.vue'
 export default {
+  data () {
+    return {
+
+    }
+  },
+  components: {
+    HomeHeader
+  }
 }
 </script>
 
 <style lang="scss" module>
-  .home {
-    color:red;
-    font-size: 100px;
-    p {
-      color: blue;
-    }
-  }
+
 </style>
