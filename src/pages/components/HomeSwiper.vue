@@ -1,6 +1,6 @@
 <template lang="html">
   <div :class="$style.container">
-    <swiper :options="swiperOption">
+    <swiper :options="swiperOption" v-if="showSwiper">
        <swiper-slide v-for="item in imgs" :key="item.id">
          <img :src="item.imgUrl"/>
        </swiper-slide>
@@ -36,6 +36,11 @@ export default {
           el: '.swiper-pagination'
         }
       }
+    }
+  },
+  computed: {
+    showSwiper () {
+      return this.imgs.length > 0
     }
   }
 }
