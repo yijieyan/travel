@@ -1,11 +1,16 @@
 <template lang="html">
   <div :class="$style.home">
-    <HomeHeader></HomeHeader>
+    <Home-header></Home-header>
+    <Home-swiper></Home-swiper>
+    <div class="">
+      test
+    </div>
   </div>
 </template>
 
 <script>
 import HomeHeader from './components/homeHeader.vue'
+import HomeSwiper from './components/HomeSwiper.vue'
 export default {
   data () {
     return {
@@ -13,7 +18,8 @@ export default {
     }
   },
   components: {
-    HomeHeader
+    HomeHeader,
+    HomeSwiper
   }
 }
 </script>
