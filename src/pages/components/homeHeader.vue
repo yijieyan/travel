@@ -21,10 +21,11 @@ export default {
 </script>
 
 <style lang="scss" module>
+  @import '../../assets/style/global.scss';
   .homeHeader {
     display: flex;
     flex-direction: row;
-    background: #00bcd4;
+    background: $bgcolor;
     height: 88px;
     line-height: 88px;
     .left {
