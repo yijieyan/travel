@@ -13,11 +13,17 @@
 </template>
 
 <script>
-import http from '../../services/APIServer'
 export default {
+  props: {
+    iconList: {
+      type: Array,
+      default: () => {
+        return []
+      }
+    }
+  },
   data () {
     return {
-      iconList: [],
       swiperOption: {
         loop: true,
         pagination: {
@@ -25,9 +31,6 @@ export default {
         }
       }
     }
-  },
-  created () {
-    this.init()
   },
   computed: {
     pages () {
@@ -40,16 +43,6 @@ export default {
         arr[page].push(item)
       })
       return arr
-    }
-  },
-  methods: {
-    async init () {
-      let res = await http.get('/static/index.json')
-      if (res.ret === true) {
-        this.iconList = res.data.iconList
-      } else {
-        alert('出错了')
-      }
     }
   }
 }

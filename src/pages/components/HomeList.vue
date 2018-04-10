@@ -15,25 +15,18 @@
 </template>
 
 <script>
-import http from '../../services/APIServer'
 export default {
-  data () {
-    return {
-      title: '猜你喜欢',
-      list: []
+  props: {
+    list: {
+      type: Array,
+      default: () => {
+        return []
+      }
     }
   },
-  created () {
-    this.init()
-  },
-  methods: {
-    async init () {
-      let res = await http.get('/static/index.json')
-      if (res.ret === true) {
-        this.list = res.data.recommendList
-      } else {
-        alert('出错了')
-      }
+  data () {
+    return {
+      title: '猜你喜欢'
     }
   }
 }

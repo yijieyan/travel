@@ -10,8 +10,23 @@
 </template>
 
 <script>
-import http from '../../services/APIServer'
 export default {
+  props: {
+    imgs: {
+      type: Array,
+      default: () => {
+        return []
+      }
+    }
+  },
+  prop: {
+    list: {
+      type: Array,
+      default: () => {
+        return []
+      }
+    }
+  },
   data () {
     return {
       swiperOption: {
@@ -20,20 +35,6 @@ export default {
         pagination: {
           el: '.swiper-pagination'
         }
-      },
-      imgs: []
-    }
-  },
-  created () {
-    this.init()
-  },
-  methods: {
-    async init () {
-      let res = await http.get('/static/index.json')
-      if (res.ret === true) {
-        this.imgs = res.data.swiperList
-      } else {
-        alert('出错了')
       }
     }
   }

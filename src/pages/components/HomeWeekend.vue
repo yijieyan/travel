@@ -16,25 +16,18 @@
 </template>
 
 <script>
-import http from '../../services/APIServer'
 export default {
-  data () {
-    return {
-      title: '周末去哪',
-      weekendList: []
+  props: {
+    weekendList: {
+      type: Array,
+      default: () => {
+        return []
+      }
     }
   },
-  created () {
-    this.init()
-  },
-  methods: {
-    async init () {
-      let res = await http.get('/static/index.json')
-      if (res.ret === true) {
-        this.weekendList = res.data.weekendList
-      } else {
-        alert('出错了')
-      }
+  data () {
+    return {
+      title: '周末去哪'
     }
   }
 }
