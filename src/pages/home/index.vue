@@ -1,20 +1,25 @@
 <template lang="html">
   <div :class="$style.home">
-    <Home-header></Home-header>
-    <Home-swiper :imgs="imgs"></Home-swiper>
-    <HomeIcons :iconList="iconList"></HomeIcons>
-    <Home-list :list="list"></Home-list>
-    <Home-weekends :weekendList="weekendList"></Home-weekends>
+    <Home-header :city="getCity"></Home-header>
+    <div :class="$style.body" ref="body">
+      <div>
+        <Home-swiper :imgs="imgs"></Home-swiper>
+        <HomeIcons :iconList="iconList"></HomeIcons>
+        <Home-list :list="list"></Home-list>
+        <Home-weekends :weekendList="weekendList"></Home-weekends>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import BScroll from 'better-scroll'
 import HomeHeader from './components/HomeHeader.vue'
 import HomeSwiper from './components/HomeSwiper.vue'
 import HomeIcons from './components/HomeIcons.vue'
 import HomeList from './components/HomeList.vue'
 import HomeWeekends from './components/HomeWeekend.vue'
-import http from '../services/APIServer'
+import http from '../../services/APIServer'
 export default {
   data () {
     return {
@@ -27,12 +32,21 @@ export default {
   created () {
     this.init()
   },
+  mounted () {
+    let dom = this.$refs.body
+    this.scroll = new BScroll(dom)
+  },
   components: {
     HomeHeader,
     HomeSwiper,
     HomeIcons,
     HomeList,
     HomeWeekends
+  },
+  computed: {
+    getCity () {
+      return this.$store.state.city
+    }
   },
   methods: {
     async init () {
@@ -53,5 +67,9 @@ export default {
 <style lang="scss" module>
   .home {
     background: #f5f5f5;
+    .body {
+      height: 100vh;
+      overflow: hidden;
+    }
   }
 </style>

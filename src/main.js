@@ -7,6 +7,7 @@ import './assets/style/reset.css'
 import './assets/style/border.css'
 import './assets/js/hotcss'
 import FastClick from 'fastclick'
+import store from './store'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
 
@@ -18,6 +19,7 @@ Vue.use(VueAwesomeSwiper)
 new Vue({
   el: '#app',
   router,
+  store: store(),
   components: { App },
   template: '<App/>'
 })

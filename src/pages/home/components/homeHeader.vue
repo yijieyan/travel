@@ -8,26 +8,33 @@
       <span>输入城市/景点/游玩主题</span>
     </div>
     <div :class="$style.right">
-      <span>城市</span>
-      <i :class="['iconfont', 'icon-arrowbottom', $style.arrow]"></i>
+      <router-link to="/city">
+        <span>{{city}}</span>
+        <i :class="['iconfont', 'icon-arrowbottom', $style.arrow]"></i>
+      </router-link>
     </div>
   </div>
 </template>
 
 <script>
 export default {
+  props: {
+    city: {
+      type: String
+    }
+  },
   name: 'HomeHeader'
 }
 </script>
 
 <style lang="scss" module>
-  @import '../../assets/style/global.scss';
+  @import '../../../assets/style/global.scss';
   .homeHeader {
     display: flex;
     flex-direction: row;
     background: $bgcolor;
-    height: 88px;
-    line-height: 88px;
+    height: $headerHeight;
+    line-height: $headerHeight;
     .left {
       float: left;
       width: 80px;
@@ -55,14 +62,19 @@ export default {
     }
     .right {
       float: right;
-      width: 132px;
+      min-width: 132px;
       height: 88px;
       color: #fff;
       font-size: 28px;
       padding-left: 22px;
+      padding-right: 20px;
       box-sizing: border-box;
+      span {
+        color: #fff;
+      }
       .arrow {
         font-size: 28px;
+        color: #fff;
       }
     }
   }

@@ -34,7 +34,7 @@ export default {
 </script>
 
 <style lang="scss" module>
-  @import '../../assets/style/global.scss';
+  @import '../../../assets/style/global.scss';
   .container {
     margin-top: 20px;
     background: #fff;

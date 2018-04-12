@@ -1,5 +1,6 @@
 @charset "utf-8";
 $bgcolor:#01bcd5;
+$headerHeight: 88px;
 @mixin ellipsis() {
   overflow: hidden;
   text-overflow: ellipsis;
