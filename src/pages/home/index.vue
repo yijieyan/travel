@@ -67,6 +67,8 @@ export default {
 <style lang="scss" module>
   .home {
     background: #f5f5f5;
+    overflow: hidden;
+    height: 100vh;
     .body {
       height: 100vh;
       overflow: hidden;

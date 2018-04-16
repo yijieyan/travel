@@ -1,5 +1,5 @@
 <template lang="html">
-  <div :class="$style.container">
+  <div :class="$style.container" id="container">
     <swiper :options="swiperOption" v-if="showSwiper">
        <swiper-slide v-for="item in imgs" :key="item.id">
          <img :src="item.imgUrl"/>
@@ -47,9 +47,6 @@ export default {
 </script>
 
 <style lang="scss" module>
-  .container >>> .swiper-pagination-bullet-active {
-    background: red!important;
-  }
   .container {
     width: 100%;
     height: 0;
@@ -59,4 +56,9 @@ export default {
       width: 100%;
     }
   }
+</style>
+<style lang="css" scoped>
+#container >>> .swiper-pagination-bullet-active {
+  background: #fff;
+}
 </style>
