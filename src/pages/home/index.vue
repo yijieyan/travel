@@ -34,7 +34,9 @@ export default {
   },
   mounted () {
     let dom = this.$refs.body
-    this.scroll = new BScroll(dom)
+    this.scroll = new BScroll(dom, {
+      click: true
+    })
   },
   components: {
     HomeHeader,

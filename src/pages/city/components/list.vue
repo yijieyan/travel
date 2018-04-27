@@ -49,7 +49,9 @@ export default {
   methods: {
     init () {
       let wrapper = this.$refs.wrapper
-      this.scroll = new BScroll(wrapper)
+      this.scroll = new BScroll(wrapper, {
+        click: true
+      })
     },
     handleChangeCity (city) {
       this.$store.commit('changeCity', city)

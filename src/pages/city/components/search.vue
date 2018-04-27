@@ -45,7 +45,9 @@ export default {
   methods: {
     init () {
       let dom = this.$refs.list
-      this.scroll = new BScroll(dom)
+      this.scroll = new BScroll(dom, {
+        click: true
+      })
     }
   }
 }
