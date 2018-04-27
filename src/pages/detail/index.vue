@@ -2,35 +2,34 @@
   <div :class="$style.container">
     <banner :imgs="imgs" :img="img" :text="text"></banner>
     <nav-header  :title="title" :status="status" :opacity="opacity"></nav-header>
+    <ticket :items="items"></ticket>
   </div>
 </template>
 
 <script>
+import http from '../../services/APIServer'
 import NavHeader from './components/header.vue'
 import Banner from './components/banner.vue'
+import Ticket from './components/ticket.vue'
 export default {
   components: {
     NavHeader,
-    Banner
+    Banner,
+    Ticket
   },
   data () {
     return {
-      title: '深圳欢乐谷',
-      img: '//img1.qunarzz.com/sight/p0/1412/4b/632fe62f622b9b112cdf9f3b80ce8f78.water.jpg_600x330_ff9705d1.jpg',
-      imgs: [
-        '//img1.qunarzz.com/sight/p0/1606/11/11be546bf06d4f67b4.water.jpg_r_800x800_a708e50f.jpg',
-        '//img1.qunarzz.com/sight/p0/1606/9f/9f866cdd66a022b7b4.water.jpg_r_800x800_20d5549e.jpg',
-        '//img1.qunarzz.com/sight/p0/1412/3a/09380cdba7d3999d208c9bf3e3b7670c.water.jpg_r_800x800_274ed038.jpg',
-        '//img1.qunarzz.com/sight/p0/1412/24/cdc1796c73dada178f2d548dd3aa0634.water.jpg_r_800x800_f4f1dd46.jpg',
-        '//img1.qunarzz.com/sight/p0/1412/d9/0448d665d385d2ba672e4148fffbc60e.water.jpg_r_800x800_3e0fb4e1.jpg',
-        '//img1.qunarzz.com/sight/p0/1412/fe/e524f9a3a3deb64eb5e7594d9a6e1766.water.jpg_r_800x800_55348372.jpg'
-      ],
-      text: '深圳欢乐谷(AAAAA景区)',
+      title: '',
+      img: '',
+      imgs: [],
+      text: '',
       status: true,
-      opacity: 0
+      opacity: 0,
+      items: []
     }
   },
   mounted () {
+    this.init()
     window.addEventListener('scroll', this.scrollerEvent)
   },
   destroyed () {
@@ -46,6 +45,17 @@ export default {
       } else {
         this.status = true
       }
+    },
+    async init () {
+      let res = await http.get('/static/detail.json')
+      if (res.ret === true) {
+        let data = res.data
+        this.title = data.title
+        this.text = data.sightName
+        this.img = data.bannerImg
+        this.imgs = data.gallaryImgs
+        this.items = data.categoryList
+      }
     }
   }
 }
@@ -54,6 +64,6 @@ export default {
 <style lang="scss" module>
   .container {
     position: relative;
-    height: 2000px;
+    height: 1400px;
   }
 </style>

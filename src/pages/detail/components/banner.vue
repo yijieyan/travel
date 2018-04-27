@@ -67,9 +67,6 @@ export default {
 <style lang="scss" module>
   .container {
     position: relative;
-    height: 1136px;
-    width: 640px;
-    overflow: hidden;
     .img {
         width: 100%;
         height: 352px;
@@ -129,6 +126,8 @@ export default {
         bottom: 0;
         left: 0;
         right: 0;
+        height: 1136px;
+        width: 640px;
         background: #000;
         .position {
           position: relative;

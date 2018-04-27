@@ -7,6 +7,7 @@ class ApiService {
   }
 
   get(url, params) {
+    url = 'https://yijieyan.github.io/travel' + url
     if(params) {
       return Http.get(url, {params}).then(res => res.data);
     }
@@ -14,6 +15,7 @@ class ApiService {
   }
 
   post(url, params = {}) {
+    url = 'https://yijieyan.github.io/travel' + url
     return Http.post(url, params).then(res => res.data);
   }
 

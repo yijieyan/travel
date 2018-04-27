@@ -2,14 +2,14 @@
   <div :class="$style.container">
     <h4 :class="$style.title">{{title}}</h4>
     <ul>
-      <li v-for="(item) in list" :key="item.id" :class="[$style.item, 'border-bottom']">
+      <router-link to="/detail" tag="li" v-for="(item) in list" :key="item.id" :class="[$style.item, 'border-bottom']">
         <img :src="item.imgUrl"/>
         <span>可订今日</span>
         <div :class="$style.info">
           <h4>{{item.title}}</h4>
           <p>{{item.desc}}</p>
         </div>
-      </li>
+      </router-link>
     </ul>
   </div>
 </template>
