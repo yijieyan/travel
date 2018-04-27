@@ -2,7 +2,7 @@
   <div :class="$style.container">
     <div ref="list" :class="$style.box">
       <ul :class="$style.list" >
-        <li v-for="(item) in search" :key="item.id">
+        <li v-for="(item) in search" :key="item.id" @click="handleChangeCity(item.name)">
           {{item.name}}
         </li>
       </ul>
@@ -48,6 +48,10 @@ export default {
       this.scroll = new BScroll(dom, {
         click: true
       })
+    },
+    handleChangeCity (city) {
+      this.$store.commit('changeCity', city)
+      this.$router.push({path: '/'})
     }
   }
 }
